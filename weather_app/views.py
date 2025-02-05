@@ -5,7 +5,7 @@ from .models import SearchHistory
 from .forms import RegisterForm, LoginForm
 import requests
 
-API_KEY = '84ca2746b402e27620371c2761a09a4d'
+API_KEY = 'WEATHER_API_KEY'
 
 
 def home(request):
