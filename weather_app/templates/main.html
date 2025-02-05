@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Weather App</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Weather App</h1>
+    
+    {% if user.is_authenticated %}
+        <p>Вы вошли как {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></p>
+        <p><a href="{% url 'history' %}">История поиска</a></p>
+    {% else %}
+        <p><a href="{% url 'login' %}">Войти</a> | <a href="{% url 'register' %}">Регистрация</a></p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city name">
+        <button type="submit">Get Weather</button>
+    </form>
+    
+    {% if weather %}
+        <h2>Weather in {{ weather.city }}:</h2>
+        <p>Temperature: {{ weather.temperature }}°C</p>
+        <p>Description: {{ weather.description }}</p>
+    {% endif %}
+</body>
+</html>

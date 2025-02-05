@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>История запросов</h1>
+    <ul>
+        {% for entry in history %}
+            <li>{{ entry.city }} - {{ entry.temperature }}°C ({{ entry.timestamp }})</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
